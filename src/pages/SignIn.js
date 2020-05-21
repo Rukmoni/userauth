@@ -19,14 +19,16 @@ import {
     TextField
   } from '@material-ui/core';
   import { makeStyles } from '@material-ui/styles';
+  import { Topbar } from '../layouts/Main/components';
 
   
 const useStyles = makeStyles((theme) => ({
     paper: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(12),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+      justifyContent:'center'
     },
     avatar: {
       margin: theme.spacing(1),
@@ -82,6 +84,7 @@ const SignIn = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+        <Topbar/>
     <CssBaseline />
     <div className={classes.paper}>
       <Avatar className={classes.avatar}>
@@ -133,9 +136,10 @@ const SignIn = () => {
             </Link>
           </Grid>
           <Grid item>
-            <Link href="#" variant="body2">
+            <Link to="/signup" variant="body2">
               {"Don't have an account? Sign Up"}
             </Link>
+            
           </Grid>
         </Grid>
       </form>
