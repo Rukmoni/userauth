@@ -3,7 +3,7 @@ import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Title from './Title';
-
+import {useTranslation} from 'react-i18next'
 function preventDefault(event) {
   event.preventDefault();
 }
@@ -16,9 +16,10 @@ const useStyles = makeStyles({
 
 export default function Deposits() {
   const classes = useStyles();
+  const { t } = useTranslation();
   return (
     <React.Fragment>
-      <Title>Recent Deposits</Title>
+      <Title>{t('Recent Deposits')}</Title>
       <Typography component="p" variant="h4">
         $3,024.00
       </Typography>
@@ -27,7 +28,7 @@ export default function Deposits() {
       </Typography>
       <div>
         <Link color="primary" href="#" onClick={preventDefault}>
-          View balance
+        {t('view balance')}
         </Link>
       </div>
     </React.Fragment>

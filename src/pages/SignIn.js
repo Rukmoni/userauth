@@ -50,7 +50,7 @@ const SignIn = () => {
     const signInWithEmailAndPasswordHandler = 
             (event,email, password) => {
                 event.preventDefault();
-               auth.createUserWithEmailAndPassword("ruk@gmail.com", "12345678")
+               auth.signInWithEmailAndPassword(email, password)
                .then(res => {
                  if (res.user) auth.setLoggedIn(true);
                })
@@ -74,10 +74,10 @@ const SignIn = () => {
       const onChangeHandler = (event) => {
           const {name, value} = event.currentTarget;
 
-          if(name === 'userEmail') {
+          if(name === 'email') {
               setEmail(value);
           }
-          else if(name === 'userPassword'){
+          else if(name === 'password'){
             setPassword(value);
           }
       };
@@ -104,6 +104,7 @@ const SignIn = () => {
           name="email"
           autoComplete="email"
           autoFocus
+          onChange={(e)=>{onChangeHandler(e)}}
         />
         <TextField
           variant="outlined"
@@ -115,6 +116,7 @@ const SignIn = () => {
           type="password"
           id="password"
           autoComplete="current-password"
+          onChange={(e)=>{onChangeHandler(e)}}
         />
         <FormControlLabel
           control={<Checkbox value="remember" color="primary" />}
@@ -126,6 +128,7 @@ const SignIn = () => {
           variant="contained"
           color="primary"
           className={classes.submit}
+          onClick={(event)=>{signInWithEmailAndPasswordHandler(event,email,password)}}
         >
           Sign In
         </Button>

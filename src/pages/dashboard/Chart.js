@@ -26,7 +26,7 @@ export default function Chart() {
   const { t } = useTranslation();
   return (
     <React.Fragment>
-      <Title>{t('DashBoard')}</Title>
+      <Title>{t('Chart')}</Title>
       <ResponsiveContainer>
         <LineChart
           data={data}

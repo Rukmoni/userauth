@@ -18,7 +18,7 @@ export default function Routes() {
     console.log("user:"+user);
   return (
      user?
-     <Profile/>:
+     <Dashboard/>:
     <Router>
       <div>
         
@@ -26,17 +26,15 @@ export default function Routes() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/profile">
-            <Profile />
-          </Route>
+         
           <Route path="/signup">
             <SignUp/>
           </Route>
           <Route path="/signin">
             <SignIn/>
           </Route>
-          <Route path="/">
-            <Dashboard/>
+          <Route exact path="/">
+          <SignIn/>
           </Route>
         </Switch>
       </div>

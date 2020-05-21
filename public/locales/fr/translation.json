@@ -6,6 +6,15 @@
     "Orders":"Ordres",
     "Report":"rapport",
     "Integrations":"Intégrations",
+    "Chart":
+    "Graphique",
+    "Recent Deposits":"Dépôts récents",
+    "view balance":"voir l'équilibre",
+    "Date":"Date",
+    "Name":"Nom",
+    "Ship To":"Envoyez à",
+    "Payment Method":"Mode de paiement",
+    "Sale Amount":"Montant des ventes",
       "title": "todos",
       "placeholder": "What needs to be done?"
     }

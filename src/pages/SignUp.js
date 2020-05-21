@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Topbar } from '../layouts/Main/components';
-
+import { auth,provider} from '../firebase';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,6 +37,38 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const signUpWithEmailAndPasswordHandler = 
+  (event,email, password) => {
+      event.preventDefault();
+     auth.createUserWithEmailAndPassword(email, password)
+     .then(res => {
+       if (res.user) auth.setLoggedIn(true);
+     })
+     .catch(e => {
+       console.log("Errpr om signup"+e)
+     });
+};
+const signInWithGoogle=(event)=>{
+  event.preventDefault();
+  auth.signInWithPopup(provider) 
+  .then((result) => {
+    const user = result.user;
+    console.log(user);
+  });
+
+}
+const onChangeHandler = (event) => {
+  const {name, value} = event.currentTarget;
+
+  if(name === 'email') {
+      setEmail(value);
+  }
+  else if(name === 'password'){
+    setPassword(value);
+  }
+};
 
   return (
     <Container component="main" maxWidth="xs">
@@ -61,6 +93,7 @@ export default function SignUp() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -83,6 +116,7 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={(e)=>{onChangeHandler(e)}}
               />
             </Grid>
             <Grid item xs={12}>
@@ -95,6 +129,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e)=>{onChangeHandler(e)}}
               />
             </Grid>
             <Grid item xs={12}>
@@ -110,6 +145,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={(e)=>{signUpWithEmailAndPasswordHandler(e,email,password)}}
           >
             Sign Up
           </Button>

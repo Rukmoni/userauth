@@ -25,6 +25,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
+import InputIcon from '@material-ui/icons/Input';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -33,6 +34,7 @@ import { useTranslation } from 'react-i18next';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import { auth,provider} from '../../firebase';
 
 function Copyright() {
   return (
@@ -145,6 +147,13 @@ export default function Dashboard() {
   const changeLanguage = code => {
     i18n.changeLanguage(code);
   };
+  const handleSignOut=()=>{
+    auth.signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
+  }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
@@ -178,6 +187,11 @@ export default function Dashboard() {
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
             </Badge>
+          </IconButton>
+          <IconButton color="inherit" onClick={()=>{handleSignOut()}}>
+            
+              <InputIcon />
+            
           </IconButton>
         </Toolbar>
       </AppBar>

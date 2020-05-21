@@ -6,6 +6,14 @@
     "Orders":"Orders",
     "Report":"Report",
     "Integrations":"Integrations",
+    "Chart":"Chart",
+    "Recent Deposits":"Recent Deposits",
+    "view balance":"view balance",
+    "Date":"Date",
+    "Name":"Name",
+    "Ship To":"Ship To",
+    "Payment Method":"Payment Method",
+    "Sale Amount":"Sales Amount",
     "placeholder": "What needs to be done?"
   }
 
